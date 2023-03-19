@@ -1,21 +1,27 @@
-import Point from "./Point"
-import Vector from "./Vector3D"
+import Vector3D from '../vector/Vector3D';
+import Vertex3D from '../vertex/Vertex3D';
 
-class Ray {
-    // public origin: Point
-    // public direction: Vector
+export default class Ray {
+  public readonly position: Vertex3D;
+  public readonly vector: Vector3D;
 
-    // constructor(origin: Point, direction: Vector) {
-    //     this.origin = origin
-    //     this.direction = direction.Normalize()
-    // }
+  constructor(position: Vertex3D, vector: Vector3D) {
+    this.position = position;
+    this.vector = vector.normalize();
+  }
 
-    // public PointAt(t: number): Point {
-    //     const x = this.origin.x + t * this.direction.x
-    //     const y = this.origin.y + t * this.direction.y
-    //     const z = this.origin.z + t * this.direction.z
+  public hasInside(vertex: Vertex3D): boolean {
+    // position + vector * t = vertex => solve for t; t = ((vertex - position) * vector) / (vector * vector)
+    const t =
+      vertex
+        .toVector()
+        .subtract(this.position.toVector())
+        .dotProduct(this.vector) / this.vector.dotProduct(this.vector);
 
-    //     return new Point(x, y, z)
-    // }
+    return t >= 0;
+  }
+
+  public angleBetweenRads(ray: Ray): number {
+    return this.vector.angleBetweenRads(ray.vector);
+  }
 }
-export default Ray
