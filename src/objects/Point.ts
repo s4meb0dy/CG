@@ -1,4 +1,4 @@
-import Vector from "./Vector"
+import Vector from "./Vector3D"
 
 class Point {
     x: number
