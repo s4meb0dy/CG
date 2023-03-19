@@ -47,6 +47,21 @@ describe("Vector3D", () => {
             expect(v1.angleBetweenRads(v2)).toBeCloseTo(Math.PI / 4)
         })
     })
+    describe("crossProduct", () => {
+        it("should return a new vector that is perpendicular to the input vectors", () => {
+            const v1 = new Vector3D(1, 0, 0)
+            const v2 = new Vector3D(0, 1, 0)
+            const v3 = v1.crossProduct(v2)
+            expect(v3.x).toBe(0)
+            expect(v3.y).toBe(0)
+            expect(v3.z).toBe(1)
+        })
+    })
 
-    
+    describe("length", () => {
+        it("should return the length of the vector", () => {
+            const v1 = new Vector3D(1, 2, 2)
+            expect(v1.length).toBeCloseTo(3)
+        })
+    })
 })
