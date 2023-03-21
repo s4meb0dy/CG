@@ -1,3 +1,4 @@
+import Point3D from "./Point3D"
 import Point from "./Point3D"
 
 class Vector3D {
@@ -53,6 +54,9 @@ class Vector3D {
         return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z)
     }
 
+    public toPoint3D(): Point3D {
+        return new Point3D(this.x, this.y, this.z)
+    }
 
     public normalize(): Vector3D {
         return this.multiply(1 / this.length)
