@@ -10,6 +10,7 @@ export default class Manager {
     private outputFormat = ''
 
     constructor(inputFormat: string, outputFormat: string){
+        // tut validation
         this.inputFormat = inputFormat
         this.outputFormat = outputFormat
     }
