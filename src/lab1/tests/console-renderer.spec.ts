@@ -1,11 +1,12 @@
-import { Traceable } from '../src/types/Traceable';
-import { Scene } from '../src/types/Scene';
-import ConsoleRenderer from '../src/ConsoleRenderer';
-import Camera from '../src/objects/Camera';
-import Point3D from '../src/objects/Point3D';
-import Vector3D from '../src/objects/Vector3D';
-import { DirectionalLight } from '../src/objects/Light';
-import { Sphere } from '../src/objects/Sphere';
+import ConsoleRenderer from "../ConsoleRenderer";
+import Camera from "../objects/Camera";
+import { DirectionalLight } from "../objects/Light";
+import Point3D from "../objects/Point3D";
+import { Sphere } from "../objects/Sphere";
+import Vector3D from "../objects/Vector3D";
+import { Scene } from "../types/Scene";
+import { Traceable } from "../types/Traceable";
+
 describe('ConsoleRenderer', () => {
   let scene: Scene;
   let renderer: ConsoleRenderer;

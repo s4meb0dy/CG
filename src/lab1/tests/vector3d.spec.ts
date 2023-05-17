@@ -1,4 +1,5 @@
-import Vector3D from "../src/objects/Vector3D"
+import Vector3D from "../objects/Vector3D"
+
 
 describe("Vector3D", () => {
     describe("add", () => {

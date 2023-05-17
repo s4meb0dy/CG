@@ -4,8 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "watch": "tsc -w",
-        "dev": "nodemon --inspect .\\dist\\src\\index.js",
+        "start": "node ./build",
+        "build": "tsc",
+        "dev1": "nodemon --inspect .\\dist\\lab1\\index.js",
+        "dev2": "nodemon --inspect .\\dist\\lab2\\index.js",
         "test": "jest --watchAll --no-cache --detectOpenHandles"
     },
     "repository": {

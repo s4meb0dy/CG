@@ -1,6 +1,7 @@
-import Point3D from '../src/objects/Point3D';
-import Vector3D from '../src/objects/Vector3D';
-import Ray from '../src/objects/Ray';
+import Point3D from "../objects/Point3D";
+import Ray from "../objects/Ray";
+import Vector3D from "../objects/Vector3D";
+
 
 describe('Ray', () => {
   const position = new Point3D(0, 0, 0);

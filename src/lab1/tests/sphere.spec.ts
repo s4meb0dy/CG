@@ -1,7 +1,8 @@
-import Point3D from "../src/objects/Point3D"
-import { Sphere } from "../src/objects/Sphere"
-import Ray from "../src/objects/Ray"
-import Vector3D from "../src/objects/Vector3D"
+import Point3D from "../objects/Point3D"
+import Ray from "../objects/Ray"
+import { Sphere } from "../objects/Sphere"
+import Vector3D from "../objects/Vector3D"
+
 
 describe("Sphere", () => {
     const center = new Point3D(0, 0, 0)

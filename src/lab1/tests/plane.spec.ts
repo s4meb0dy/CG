@@ -1,8 +1,8 @@
-import Vector3D from '../src/objects/Vector3D';
-import Point3D from '../src/objects/Point3D';
-import Plane from '../src/objects/Plane';
-import Ray from '../src/objects/Ray';
-import Normal3D from '../src/objects/Normal';
+import Normal3D from "../objects/Normal";
+import Plane from "../objects/Plane";
+import Point3D from "../objects/Point3D";
+import Ray from "../objects/Ray";
+import Vector3D from "../objects/Vector3D";
 
 describe('Plane', () => {
   const normal = new Vector3D(0, 0, 1);
