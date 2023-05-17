@@ -1,5 +1,7 @@
 import ImageConverter from "./ImageConverter";
 import BMPReader from "./plugins/bmp/BMPReader";
+import BMPWriter from "./plugins/bmp/BMPWriter";
+import PPMReader from "./plugins/ppm/PPMReader";
 import PPMWriter from "./plugins/ppm/PPMWriter";
 
 export default class Manager {
@@ -21,37 +23,45 @@ export default class Manager {
                 
             case 'ppm':
                 return () => {
-                    return BMPReader.read(inputPath)
+                    return PPMReader.read(inputPath)
                 }
             default: 
                 return () => {throw new Error('Some error')}
         }
     }
 
-    public getWriteCallback (outputPath: string, ppmData: string) {
+    public getWriteCallback (outputPath: string, data: string | Buffer) {
         switch(this.outputFormat){
             case 'bmp':
                 return () => {
-                    return PPMWriter.write(outputPath, ppmData)
+                    if(data instanceof Buffer)
+                        return BMPWriter.write(outputPath, data)
+                    else () => {throw new Error('Some error')}
                 }
             case 'ppm':
                 return () => {
-                    return PPMWriter.write(outputPath, ppmData)
+                    if(typeof data === 'string')
+                        return PPMWriter.write(outputPath, data)
+                    else () => {throw new Error('Some error')}
                 }
             default: 
                 return () => {throw new Error('Some error')}
         }
     }
 
-    public getConvertorCallback (readFile: Buffer) {
+    public getConvertorCallback (readFile: Buffer | string) {
         switch(`${this.inputFormat} - ${this.outputFormat}`){
             case 'bmp - ppm':
                 return () => {
-                    return ImageConverter.BMPtoPPM(readFile)
+                    if(readFile instanceof Buffer)
+                        return ImageConverter.BMPtoPPM(readFile)
+                    else throw new Error('Some error')
                 }
             case 'ppm - bmp':
                 return () => {
-                    return ImageConverter.BMPtoPPM(readFile)
+                    if(typeof readFile === 'string')
+                        return ImageConverter.PPMtoBMP(readFile)
+                    else throw new Error('Some error')
                 }
             default: 
                 return () => {throw new Error('Some error')}

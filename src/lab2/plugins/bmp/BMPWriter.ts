@@ -5,11 +5,11 @@ export default class BMPWriter {
 
     }
 
-    private static _writeFile(filePath: string, data: string): void {
+    private static _writeFile(filePath: string, data: Buffer): void {
         fs.writeFileSync(filePath, data);
       }
 
-    public static write(outputPath: string, data: string) {
+    public static write(outputPath: string, data: Buffer) {
         this._writeFile(outputPath, data);
     }
 

@@ -6,8 +6,8 @@ export default class PPMReader {
 
     }
 
-    private static _readFile(filePath: string): Buffer {
-        return fs.readFileSync(filePath);
+    private static _readFile(filePath: string): string {
+        return fs.readFileSync(filePath, 'utf8');
     }
 
     public static read(filePath: string){
