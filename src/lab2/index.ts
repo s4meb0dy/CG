@@ -1,15 +1,18 @@
 import ImageConverter from "./ImageConverter";
-import Loader from "./Loader";
+import InputInformation from "./InputInformation";
+import Manager from "./Manager";
 import BMPReader from "./plugins/bmp/BMPReader";
 import PPMWriter from "./plugins/ppm/PPMWriter";
 
-const loader = new Loader()
+const inputInformation = new InputInformation()
 
+const manager = new Manager(inputInformation.inputFormat, inputInformation.outputFormat)
 
-const fileBmp = BMPReader.read(loader.inputPath)
 try{
-    const ppmData = ImageConverter.BMPtoPPM(fileBmp)
-    PPMWriter.write(loader.outputPath, ppmData)
+    const readFile = manager.getReadCallback(inputInformation.inputPath)()
+    const resultData = manager.getConvertorCallback(readFile)()
+
+    manager.getWriteCallback(inputInformation.outputPath, resultData)()       
 } 
 catch(error){
     console.log("Error", error)

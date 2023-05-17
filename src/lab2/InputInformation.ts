@@ -1,4 +1,4 @@
-export default class Loader {
+export default class InputInformation {
   public fileName: string = "";
   public inputFormat: string = "";
   public outputFormat: string = "";
