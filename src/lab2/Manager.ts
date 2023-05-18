@@ -36,7 +36,7 @@ export default class Manager {
                     return PPMReader.read(inputPath)
                 }
             default: 
-                return () => {throw new Error('Some error')}
+                return () => {throw new Error('Invalid input format')}
         }
     }
 
@@ -74,7 +74,7 @@ export default class Manager {
                     else throw new Error('Some error')
                 }
             default: 
-                return () => {throw new Error('Some error')}
+                return () => {throw new Error('Invalid output format')}
         }
         
     }
