@@ -1,8 +1,10 @@
+import fs from "fs";
 import ImageConverter from "./ImageConverter";
 import BMPReader from "./plugins/bmp/BMPReader";
 import BMPWriter from "./plugins/bmp/BMPWriter";
 import PPMReader from "./plugins/ppm/PPMReader";
 import PPMWriter from "./plugins/ppm/PPMWriter";
+import { error } from "console";
 
 export default class Manager {
 
@@ -10,7 +12,14 @@ export default class Manager {
     private outputFormat = ''
 
     constructor(inputFormat: string, outputFormat: string){
-        // tut validation
+        if (fs.existsSync(inputFormat)){
+            throw new Error('Invalid input format');
+            
+        }
+        if (fs.existsSync(outputFormat)){
+            throw new Error('Invalid output format');
+            
+        }
         this.inputFormat = inputFormat
         this.outputFormat = outputFormat
     }
@@ -67,5 +76,7 @@ export default class Manager {
             default: 
                 return () => {throw new Error('Some error')}
         }
+        
     }
+    
 }
