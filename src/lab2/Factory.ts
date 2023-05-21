@@ -23,17 +23,18 @@ export default class Factory {
                 `./plugins/${
                     this.inputFormat
                 }/${this.inputFormat.toUpperCase()}Reader.ts`
-            )
+                )
             this.readPlugin = readModule.default
 
             const writeModule = await import(
                 `./plugins/${
-                    this.inputFormat
-                }/${this.inputFormat.toUpperCase()}Writer.ts`
-            )
+                    this.outputFormat
+                }/${this.outputFormat.toUpperCase()}Writer.ts`
+                )
             this.writePlugin = writeModule.default
         } catch (error) {
-            const directoryPath = "D:/projects/kpi/CG/src/lab2/plugins"
+            const directoryPath = ${__dirname}/plugins
+
             const files: string[] = fs.readdirSync(directoryPath)
 
             throw new Error(
@@ -53,12 +54,12 @@ export default class Factory {
     public getWriteCallback(outputPath: string, data: Buffer) {
         return () => {
             return this.writePlugin.write(outputPath, data)
-            
+
         }
     }
 
     public getConvertorCallback(readFile: Buffer) {
-        switch (`${this.inputFormat} - ${this.outputFormat}`) {
+        switch (${this.inputFormat} - ${this.outputFormat}) {
             case "bmp - ppm":
                 return () => {
                     if (readFile instanceof Buffer)
