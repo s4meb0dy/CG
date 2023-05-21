@@ -1,11 +1,8 @@
 import fs from "fs"
 import ImageConverter from "./ImageConverter"
-// import BMPReader from "./plugins/bmp/BMPReader"
-// import BMPWriter from "./plugins/bmp/BMPWriter"
-// import PPMReader from "./plugins/ppm/PPMReader"
-// import PPMWriter from "./plugins/ppm/PPMWriter"
 
-export default class Manager {
+
+export default class Factory {
     private inputFormat = ""
     private outputFormat = ""
     private readPlugin: any
@@ -45,8 +42,6 @@ export default class Manager {
                 )}] formats. :)`
             )
         }
-        console.log(this.readPlugin)
-        console.log(this.writePlugin)
     }
 
     public getReadCallback(inputPath: string) {

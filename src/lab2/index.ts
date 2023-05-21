@@ -1,10 +1,12 @@
 import InputInformation from "./InputInformation"
-import Manager from "./Manager"
+import Factory from "./Factory"
+const fs = require("fs")
+const zlib = require("zlib")
 
 const start = async () => {
     try {
         const inputInformation = new InputInformation()
-        const manager = new Manager(
+        const manager = new Factory(
             inputInformation.inputFormat,
             inputInformation.outputFormat
         )
@@ -21,3 +23,4 @@ const start = async () => {
 }
 
 start()
+
