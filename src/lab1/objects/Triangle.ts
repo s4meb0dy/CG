@@ -21,7 +21,7 @@ export default class Triangle {
     const h = ray.vector.crossProduct(edge2);
     const a = edge1.dotProduct(h);
 
-    if (a > -EPSILON && a > EPSILON) {
+    if (a > -EPSILON && a < EPSILON) {
       return null;
     }
 
