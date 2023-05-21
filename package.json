@@ -7,7 +7,7 @@
         "start": "node ./build",
         "build": "tsc",
         "dev1": "ts-node .\\src\\lab1\\index.ts",
-        "dev2": "ts-node .\\src\\lab2\\index.ts --source=coffe.png --goal-format=bmp ",
+        "dev2": "ts-node .\\src\\lab2\\index.ts --source=img.bmp --goal-format=ppm ",
         "test": "jest --watchAll --no-cache --detectOpenHandles"
     },
     "repository": {
