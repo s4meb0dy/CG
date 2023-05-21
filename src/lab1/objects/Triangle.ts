@@ -1,5 +1,5 @@
-import Vector from '../../lab3/objects/Vector3D';
-import Ray from '../../lab3/objects/Ray';
+import Vector from './Vector3D';
+import Ray from './Ray';
 
 export default class Triangle {
   public vertex1: Vector;
