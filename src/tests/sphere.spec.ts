@@ -1,8 +1,7 @@
-import Point3D from "../objects/Point3D"
-import Ray from "../objects/Ray"
-import { Sphere } from "../objects/Sphere"
-import Vector3D from "../objects/Vector3D"
-
+import Point3D from "../lab1/objects/Point3D"
+import Ray from "../lab1/objects/Ray"
+import { Sphere } from "../lab1/objects/Sphere"
+import Vector3D from "../lab1/objects/Vector3D"
 
 describe("Sphere", () => {
     const center = new Point3D(0, 0, 0)

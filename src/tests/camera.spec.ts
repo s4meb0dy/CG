@@ -1,7 +1,6 @@
-import Camera from "../objects/Camera"
-import Point3D from "../objects/Point3D"
-import Vector3D from "../objects/Vector3D"
-
+import Camera from "../lab1/objects/Camera"
+import Point3D from "../lab1/objects/Point3D"
+import Vector3D from "../lab1/objects/Vector3D"
 
 describe("Camera", () => {
     const ratio = 16 / 9
