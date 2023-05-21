@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import Triangle from './Triangle';
-import Vector3D from './Vector3D';
+import Triangle from '../lab1/objects/Triangle';
+import Vector3D from '../lab1/objects/Vector3D';
 
 
 export default class Reader {

@@ -1,4 +1,4 @@
-import Reader from "../lab1/objects/Reader"
+import Reader from "./Reader"
 
 const start = async () => {
     let src = ''
