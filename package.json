@@ -8,7 +8,7 @@
         "build": "tsc",
         "dev1": "ts-node .\\src\\lab1\\index.ts",
         "dev2": "ts-node .\\src\\lab2\\index.ts --source=img.bmp --goal-format=ppm --output=D:/",
-        "dev3": "ts-node .\\src\\lab3\\index.ts",
+        "dev3": "ts-node .\\src\\lab3\\index.ts --source=teapot.obj",
         "test": "jest --watchAll --no-cache --detectOpenHandles"
     },
     "repository": {
