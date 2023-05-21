@@ -33,7 +33,7 @@ export default class Factory {
                 )
             this.writePlugin = writeModule.default
         } catch (error) {
-            const directoryPath = ${__dirname}/plugins
+            const directoryPath = `${__dirname}/plugins`
 
             const files: string[] = fs.readdirSync(directoryPath)
 
@@ -59,7 +59,7 @@ export default class Factory {
     }
 
     public getConvertorCallback(readFile: Buffer) {
-        switch (${this.inputFormat} - ${this.outputFormat}) {
+        switch (`${this.inputFormat} - ${this.outputFormat}`) {
             case "bmp - ppm":
                 return () => {
                     if (readFile instanceof Buffer)
