@@ -1,7 +1,7 @@
 import Matrix from './../lab1/objects/matrix';
 import Vector from './../lab1/objects/Vector3D';
 
-export enum MatrixTransformation {
+export enum MatrixTransformationEnum {
   TRANSLATE = 'TRANSLATE',
   SCALE = 'SCALE',
   ROTATE = 'ROTATE',
@@ -9,15 +9,15 @@ export enum MatrixTransformation {
 
 export type MatrixTransformations =
   | {
-      type: MatrixTransformation.SCALE;
+      type: MatrixTransformationEnum.SCALE;
       scaleVector: Vector;
     }
   | {
-      type: MatrixTransformation.TRANSLATE;
+      type: MatrixTransformationEnum.TRANSLATE;
       translation: Vector;
     }
   | {
-      type: MatrixTransformation.ROTATE;
+      type: MatrixTransformationEnum.ROTATE;
       degrees: number;
       axis: Vector;
     };
@@ -28,15 +28,15 @@ export const transformationFactory = (
 ) => {
   return transformations.reduce((transformedVector, transformation) => {
     switch (transformation.type) {
-      case MatrixTransformation.SCALE:
+      case MatrixTransformationEnum.SCALE:
         return Matrix.scale(transformedVector, transformation.scaleVector);
-      case MatrixTransformation.ROTATE:
+      case MatrixTransformationEnum.ROTATE:
         return Matrix.rotateAroundAxis(
           transformedVector,
           transformation.axis,
           transformation.degrees
         );
-      case MatrixTransformation.TRANSLATE:
+      case MatrixTransformationEnum.TRANSLATE:
         return Matrix.translate(transformedVector, transformation.translation);
       default:
         return transformedVector;

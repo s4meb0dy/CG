@@ -12,6 +12,13 @@ class Vector3D {
         this.z = z
     }
 
+    public getDistanceTo(other: Vector3D): number {
+        const dx = other.x - this.x;
+        const dy = other.y - this.y;
+        const dz = other.z - this.z;
+        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+      }
+
     public add(vector: Vector3D): Vector3D {
         return new Vector3D(
             this.x + vector.x,

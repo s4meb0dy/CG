@@ -4,6 +4,7 @@ import Point3D from "./Point3D"
 export default class Camera {
     public readonly rightVector: Vector3D
     public readonly upVector: Vector3D
+    public readonly position: Point3D
 
     constructor(
         public readonly focalPoint: Point3D,
@@ -12,6 +13,7 @@ export default class Camera {
         public readonly hFieldOfViewRads: number,
         public readonly hResolution: number
     ) {
+        this.position = focalPoint
         if (this.viewVector.crossProduct(new Vector3D(0, 0, 1)).length === 0) {
             this.rightVector = new Vector3D(1, 0, 0)
         } else {
