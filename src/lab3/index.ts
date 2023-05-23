@@ -4,6 +4,8 @@ import Vector3D from "../lab1/objects/Vector3D";
 import Point3D from "../lab1/objects/Point3D";
 import Raytracer from "./rayTracer";
 import Triangle from "../lab1/objects/Triangle";
+// import Triangle from "./p/classes/triangle/Triangle";
+import {DirectionalLight} from "../lab1/objects/Light";
 import { MatrixTransformationEnum, MatrixTransformations, transformationFactory } from "./matrixTransformation";
 import WriterToConsole from "../lab1/objects/WriterToConsole";
 
@@ -18,15 +20,13 @@ const start = async () => {
 
         src = `${__dirname}/${inputFile}`.replace(/\\/g, "/");
 
-        
-        // console.log(triangles)
       } else throw new Error("obj file error");
     });
 
     const triangles = Reader.readObjFile(src);
 
     const camera = new Camera(
-        new Point3D(0, 0, -5),
+        new Point3D(0, 0, -50),
         new Vector3D(0, 0, 1),
         1,
         Math.PI / 3,
@@ -42,7 +42,8 @@ const start = async () => {
         ),
       ];
 
-    const lightDirection = new Vector3D(-0.5, -0.5, -1).normalize();
+    // const lightDirection = new Vector3D(-0.5, -0.5, -1).normalize();
+    const lightDirection = new DirectionalLight(new Vector3D(-0.5, -0.5, -1))
 
     const matrixTransformations: MatrixTransformations[] = [
         {
@@ -60,7 +61,7 @@ const start = async () => {
         },
       ];
 
-      const imageData = rayTracer.trace(triangles, lightDirection);
+      const imageData = rayTracer.trace(triangles, lightDirection.vector);
       
       const writer = new WriterToConsole(imageData)
 

@@ -1,5 +1,5 @@
-import Vector from './Vector3D';
-import Ray from './Ray';
+import Vector from '../objects/Vector3D';
+import Ray from '../objects/Ray';
 
 export default class Triangle {
   public vertex1: Vector;
@@ -32,7 +32,7 @@ export default class Triangle {
       return null;
     }
     const q = s.crossProduct(edge1);
-    const v = f * ray.position.toVector().dotProduct(q);
+    const v = f * ray.vector.dotProduct(q);
     if (v < 0 || u + v > 1) {
       return null;
     }
