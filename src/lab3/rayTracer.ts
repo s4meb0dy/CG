@@ -6,6 +6,7 @@ import {
   MatrixTransformations,
   transformationFactory,
 } from "./matrixTransformation";
+import { Sphere } from "../lab1/objects/Sphere";
 
 export default class Raytracer {
   private camera: Camera;
@@ -21,9 +22,8 @@ export default class Raytracer {
   }
 
   trace(
-    objects: Triangle[],
+    objects: (Sphere | Triangle)[],
     lightDirection: Vector,
-    outputFile?: string,
     rayTransformationSequence?: MatrixTransformations[]
   ): number[][] {
     const imageData: number[][] = [];
@@ -120,8 +120,8 @@ export default class Raytracer {
 
   private isInShadow(
     shadowRay: Ray,
-    objects: Triangle[],
-    closestObject: Triangle
+    objects: (Sphere | Triangle)[],
+    closestObject: Triangle | Sphere
   ): boolean {
     let inShadow = false;
     for (const object of objects) {
