@@ -1,7 +1,6 @@
 import InputInformation from "./InputInformation"
 import Factory from "./Factory"
-const fs = require("fs")
-const zlib = require("zlib")
+
 
 const start = async () => {
     try {

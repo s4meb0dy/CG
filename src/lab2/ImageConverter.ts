@@ -1,6 +1,7 @@
 export default class ImageConverter {
 
     public static BMPtoPPM(readBMP: Buffer) : Buffer {
+
         const fileSize = readBMP.readUInt32LE(2)
         const pixelOffset = readBMP.readUInt32LE(10)
         const width = readBMP.readUInt32LE(18)
@@ -80,4 +81,5 @@ export default class ImageConverter {
 
         return buffer
     }
+
 }
