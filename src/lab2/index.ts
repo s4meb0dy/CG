@@ -6,17 +6,20 @@ const zlib = require("zlib")
 const start = async () => {
     try {
         const inputInformation = new InputInformation()
-        const manager = new Factory(
+        const factory = new Factory(
             inputInformation.inputFormat,
             inputInformation.outputFormat
         )
 
-        await manager.loadPlugin()
+        await factory.loadPlugin()
+        if(inputInformation.outputCustomPath && inputInformation.outputCustomPath != '')
+            await factory.checkExistenceOutputDir(inputInformation.outputCustomPath)
 
-        const readFile = manager.getReadCallback(inputInformation.inputPath)()
-        const resultData = manager.getConvertorCallback(readFile)()
-
-        manager.getWriteCallback(inputInformation.outputPath, resultData)()
+        const readFile = factory.getReadCallback(inputInformation.inputPath)()
+        const resultData = factory.getConvertorCallback(readFile)()
+        
+        factory.getWriteCallback(inputInformation.outputPath , resultData)()
+        console.log('Everything is ok)')
     } catch (error: any) {
         console.log("Error", error?.message)
     }

@@ -45,6 +45,15 @@ export default class Factory {
         }
     }
 
+    public async checkExistenceOutputDir(outputPath: string){
+        try {
+            const stats = fs.statSync(outputPath);
+            return stats.isDirectory();
+          } catch (error) {
+            throw new Error( `There is no way for output file (${outputPath}). You can create a folder, There is tutorial: \nhttps://www.youtube.com/watch?v=5QZcOugHQ6s&ab_channel=kriper2004 :)`)
+          }
+    }
+
     public getReadCallback(inputPath: string) {
         return () => {
             return this.readPlugin.read(inputPath)
