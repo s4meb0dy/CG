@@ -7,24 +7,15 @@ import { DirectionalLight } from "../lab1/objects/Light"
 import {
     MatrixTransformationEnum,
     MatrixTransformations,
-    transformationFactory,
 } from "./matrixTransformation"
 import Writer from "../lab1/objects/Writer"
 import { Sphere } from "../lab1/objects/Sphere"
+import { prestart } from "./prestart"
 
 const start = async () => {
-    let src = ""
-
     try {
-        const args = process.argv.slice(2)
-        args.forEach((arg) => {
-            if (arg.includes("--source=")) {
-                const inputFile = arg.slice(9)
-
-                src = `${__dirname}/${inputFile}`.replace(/\\/g, "/")
-            } else throw new Error("obj file error")
-        })
-
+        const data = prestart()
+    
         const camera = new Camera(
             new Point3D(0, 0, -5000),
             new Vector3D(0, 0, 1),
@@ -33,12 +24,6 @@ const start = async () => {
             100
         )
         const rayTracer = new Raytracer(camera, 100, 100)
-
-        const triangles = Reader.readObjFile(src)
-        const objects = [
-            ...triangles,
-            // new Sphere(new Vector3D(0, 400, -3000), 100),
-        ]
 
         const lightDirection = new DirectionalLight(new Vector3D(0, -0.5, -0.5))
 
@@ -58,18 +43,24 @@ const start = async () => {
             },
         ]
 
-        const imageData = rayTracer.trace(
-            objects,
+        const viewData = rayTracer.trace(
+            data.scene,
             lightDirection.vector,
             matrixTransformations
         )
 
-        const writer = new Writer(imageData)
-
-        // writer.write('file', __dirname + '/output.ppm');
-        writer.write("console")
+        const writer = new Writer(viewData)
+        
+        switch(data.output){
+            case 'console':
+                writer.write("console")
+                break 
+            case 'file':
+                writer.write('file', __dirname + '/output.ppm');
+                break     
+        }
     } catch (error: any) {
-        console.log("Error", error?.message)
+        console.log("Error:", error?.message)
     }
 }
 
