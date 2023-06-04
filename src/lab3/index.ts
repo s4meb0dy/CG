@@ -16,6 +16,8 @@ const start = async () => {
     try {
         const data = prestart()
     
+        if(!data.light || !data.camera) throw new Error('Occurred some error')
+
         const camera = new Camera(
             new Point3D(0, 0, -5000),
             new Vector3D(0, 0, 1),
@@ -23,9 +25,10 @@ const start = async () => {
             Math.PI / 3,
             100
         )
-        const rayTracer = new Raytracer(camera, 100, 100)
+        const rayTracer = new Raytracer(data.camera, 100, 100)
 
         const lightDirection = new DirectionalLight(new Vector3D(0, -0.5, -0.5))
+       
 
         const matrixTransformations: MatrixTransformations[] = [
             {
@@ -45,13 +48,14 @@ const start = async () => {
 
         const viewData = rayTracer.trace(
             data.scene,
-            lightDirection.vector,
+            // lightDirection.vector,
+            data.light.vector,
             matrixTransformations
         )
 
         const writer = new Writer(viewData)
         
-        switch(data.output){
+        switch(data.outputType){
             case 'console':
                 writer.write("console")
                 break 

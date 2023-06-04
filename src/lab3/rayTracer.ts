@@ -1,3 +1,4 @@
+import { DirectionalLight } from './../lab1/objects/Light';
 import Vector from "../lab1/objects/Vector3D";
 import Ray from "../lab1/objects/Ray";
 import Camera from "../lab1/objects/Camera";
@@ -7,6 +8,7 @@ import {
   transformationFactory,
 } from "./matrixTransformation";
 import { Sphere } from "../lab1/objects/Sphere";
+
 
 export default class Raytracer {
   private camera: Camera;
@@ -124,6 +126,7 @@ export default class Raytracer {
     closestObject: Triangle | Sphere
   ): boolean {
     let inShadow = false;
+    
     for (const object of objects) {
       if (object !== closestObject && object.getIntersection(shadowRay)) {
         inShadow = true;
