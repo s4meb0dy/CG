@@ -10,6 +10,7 @@ export default class BMPWriter {
       }
 
     public static write(outputPath: string, data: Buffer) {
+
         this._writeFile(outputPath, data);
     }
 
