@@ -3,7 +3,7 @@ import Camera from "../lab1/objects/Camera"
 import Vector3D from "../lab1/objects/Vector3D"
 import Point3D from "../lab1/objects/Point3D"
 import Raytracer from "./rayTracer"
-import { DirectionalLight } from "../lab1/objects/Light"
+import { DirectionalLight } from "../lab1/objects/DirectionalLight"
 import {
     MatrixTransformationEnum,
     MatrixTransformations,
@@ -11,6 +11,7 @@ import {
 import Writer from "../lab1/objects/Writer"
 import { Sphere } from "../lab1/objects/Sphere"
 import { prestart } from "./prestart"
+import { Color } from "../lab1/objects/Color"
 
 const start = async () => {
     try {
@@ -27,7 +28,7 @@ const start = async () => {
         )
         const rayTracer = new Raytracer(data.camera, 100, 100)
 
-        const lightDirection = new DirectionalLight(new Vector3D(0, -0.5, -0.5))
+        const directionalLight = new DirectionalLight(new Vector3D(0, -0.5, -0.5), new Color(255, 255, 0), 1);
        
 
         const matrixTransformations: MatrixTransformations[] = [
@@ -48,8 +49,7 @@ const start = async () => {
 
         const viewData = rayTracer.trace(
             data.scene,
-            // lightDirection.vector,
-            data.light.vector,
+            directionalLight.direction,
             matrixTransformations
         )
 

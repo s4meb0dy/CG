@@ -9,7 +9,7 @@
         "dev1": "ts-node .\\src\\lab1\\index.ts",
         "dev2": "ts-node .\\src\\lab2\\index.ts --source=img.bmp --goal-format=ppm --output=E:/ ",
         "dev3": "ts-node .\\src\\lab3\\index.ts --source=cow.obj",
-        "dev4": "ts-node .\\src\\lab3\\index.ts --scene=custom-scene --output=console",
+        "dev4": "ts-node .\\src\\lab3\\index.ts --scene=sphere-scene --output=file",
         "test": "jest --watchAll --no-cache --detectOpenHandles"
     },
     "repository": {

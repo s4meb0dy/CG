@@ -1,4 +1,4 @@
-import { DirectionalLight } from './../lab1/objects/Light';
+import { DirectionalLight } from '../lab1/objects/DirectionalLight';
 import Vector from "../lab1/objects/Vector3D";
 import Ray from "../lab1/objects/Ray";
 import Camera from "../lab1/objects/Camera";

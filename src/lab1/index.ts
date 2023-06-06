@@ -1,6 +1,6 @@
 import Camera from "./objects/Camera"
 import ConsoleRenderer from "./ConsoleRenderer"
-import { DirectionalLight } from "./objects/Light"
+import { DirectionalLight } from "./objects/DirectionalLight"
 import Plane from "./objects/Plane"
 import { Sphere } from "./objects/Sphere"
 import Vector3D from "./objects/Vector3D"

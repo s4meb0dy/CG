@@ -1,5 +1,7 @@
+import { PointLight } from "../lab1/PointLights"
+import { AmbientLight } from "../lab1/objects/AmbientLight"
 import Camera from "../lab1/objects/Camera"
-import { DirectionalLight } from "../lab1/objects/Light"
+import { DirectionalLight } from "../lab1/objects/DirectionalLight"
 import Scene from "../lab1/objects/Scene"
 import { Sphere } from "../lab1/objects/Sphere"
 import Triangle from "../lab1/objects/Triangle"
@@ -7,7 +9,7 @@ import Reader from "./Reader"
 
 interface IData {
     scene: (Triangle | Sphere)[]
-    light: DirectionalLight | null,
+    light:  AmbientLight | DirectionalLight | PointLight | null;
     camera: Camera | null,
     outputType: 'console' | 'file'
 }

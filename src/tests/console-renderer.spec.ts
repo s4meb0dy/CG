@@ -1,6 +1,6 @@
 import ConsoleRenderer from "../lab1/ConsoleRenderer"
 import Camera from "../lab1/objects/Camera"
-import { DirectionalLight } from "../lab1/objects/Light"
+import { DirectionalLight } from "../lab1/objects/DirectionalLight"
 import Point3D from "../lab1/objects/Point3D"
 import { Sphere } from "../lab1/objects/Sphere"
 import Vector3D from "../lab1/objects/Vector3D"
